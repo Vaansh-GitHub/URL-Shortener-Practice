@@ -15,10 +15,11 @@ async function handleGenerateShortUrl(req, res) {
         short_url:id,
         times_visited:[],
     })
-
-    return res.json({
-        id:id
-    })
+    const allUrls= await URL.find({});
+    return res.render("home",{
+        id:id,
+        urls: allUrls
+    });
 }
 //This function fetches the analytics from the Db
 async function handleFetchAnalytics(req,res)
